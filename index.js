@@ -31,11 +31,37 @@ function handleEvent(event) {
     return Promise.resolve(null);
   }
 
-  // create a echoing text message
-  const echo = { type: 'text', text: event.message.text };
+  if (event.message.text == 'menu') {
+    const yesNo = {
+      "type": "template",
+      "altText": "this is a confirm template",
+      "template": {
+          "type": "confirm",
+          "text": "Are you sure?",
+          "actions": [
+              {
+                "type": "message",
+                "label": "Yes",
+                "text": "yes"
+              },
+              {
+                "type": "message",
+                "label": "No",
+                "text": "no"
+              }
+          ]
+      }
+    }
 
-  // use reply API
-  return client.replyMessage(event.replyToken, echo);
+    // use reply API
+    return client.replyMessage(event.replyToken, yesNo)
+  } else {
+    // create a echoing text message
+    const echo = { type: 'text', text: event.message.text };
+
+    // use reply API
+    return client.replyMessage(event.replyToken, echo);
+  }
 }
 
 // listen on port
