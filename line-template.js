@@ -3,7 +3,7 @@
 const replyMessageFormat = function (type) {
   var replyFormat
   switch (type) {
-    case type == "confirm":
+    case "confirm":
       replyFormat = {
         "type": "template",
         "altText": "this is a confirm template",
@@ -25,7 +25,7 @@ const replyMessageFormat = function (type) {
         }
       }
       break;
-      case type == "thumbnailImageUrl":
+      case "thumbnailImageUrl":
         replyFormat = {
           "type": "template",
           "altText": "this is a buttons template",
@@ -54,7 +54,7 @@ const replyMessageFormat = function (type) {
           }
         }
       break;
-      case type == "carousel":
+      case "carousel":
         replyFormat = {
           "type": "template",
           "altText": "this is a carousel template",
