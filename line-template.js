@@ -1,7 +1,7 @@
 'use strict';
 
 const replyMessageFormat = function (type) {
-  const replyFormat
+  var replyFormat
   switch (type) {
     case type == "confirm":
       replyFormat = {
