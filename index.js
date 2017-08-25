@@ -23,7 +23,7 @@ app.post('/webhook', line.middleware(config), (req, res) => {
 });
 
 // event handler
-async function handleEvent(event) {
+function handleEvent(event) {
   var formatReply
   if (event.type !== 'message' || event.message.type !== 'text') {
     // ignore non-text-message event
@@ -31,7 +31,7 @@ async function handleEvent(event) {
   }
 
   else if (event.message.text === 'Menu'){
-    formatReply = await {
+    formatReply = {
       "type": "template",
       "altText": "this is a carousel template",
       "template": {
@@ -90,7 +90,13 @@ async function handleEvent(event) {
           ]
       }
     }
-    return client.replyMessage(event.replyToken, formatReply);
+    client.replyMessage(event.replyToken, formatReply)
+    .then(result => {
+      return result
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
 
   else {
