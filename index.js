@@ -45,12 +45,14 @@ function handleEvent(event) {
                 {
                   "type": "postback",
                   "label": "Hangman",
-                  "data": "hangman"
+                  "data": "hangman",
+                  "text": "hangman"
                 },
                 {
                   "type": "postback",
-                  "label": "Quiz BCA",
-                  "data": "quizbca"
+                  "label": "Hangman",
+                  "data": "hangman",
+                  "text": "hangman"
                 }
               ]
             },
@@ -61,18 +63,21 @@ function handleEvent(event) {
               "actions": [
                 {
                   "type": "postback",
-                  "label": "Cek Saldo",
-                  "data": "ceksaldo"
+                  "label": "Hangman",
+                  "data": "hangman",
+                  "text": "hangman"
                 },
                 {
                   "type": "postback",
-                  "label": "Alokasi Dana",
-                  "data": "alokasi"
+                  "label": "Hangman",
+                  "data": "hangman",
+                  "text": "hangman"
                 },
                 {
                   "type": "postback",
-                  "label": "Set Goals",
-                  "data": "setgoals"
+                  "label": "Hangman",
+                  "data": "hangman",
+                  "text": "hangman"
                 }
               ]
             }
