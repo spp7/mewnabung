@@ -94,10 +94,9 @@ const poin = function(client, event) {
     text: `poin mu untuk saat ini adalah ${myPoin}`
   }
   client.replyMessage(event.replyToken, message)
-  .then(result => {
+  .then( => {
     var formatReply = 'helo'
-    console.log(result);
-    // return result
+    client.replyMessage(event.replyToken, formatReply)
   })
   .catch(err => {
     console.log(err)
