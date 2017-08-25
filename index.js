@@ -53,6 +53,12 @@ function handleEvent(event) {
                   "label": "Hangman",
                   "data": "hangman",
                   "text": "hangman"
+                },
+                {
+                  "type": "postback",
+                  "label": "Hangman",
+                  "data": "hangman",
+                  "text": "hangman"
                 }
               ]
             },
