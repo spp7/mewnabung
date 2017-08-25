@@ -93,13 +93,14 @@ const poin = function(client, event) {
     type: 'text',
     text: `poinmu untuk saat ini adalah ${myPoin}, tukarkan poinmu dengan reward menarik berikut!`
   }
+  let formatReply = {
+    type: 'text',
+    text: `poinmu untuk saat ini adalah ${myPoin}, tukarkan poinmu dengan reward menarik berikut!`
+  }
   client.replyMessage(event.replyToken, message)
+  client.replyMessage(event.replyToken, formatReply)
   .then(() => {
-    let formatReply = {
-      type: 'text',
-      text: `poinmu untuk saat ini adalah ${myPoin}, tukarkan poinmu dengan reward menarik berikut!`
-    }
-    return client.replyMessage(event.replyToken, formatReply)
+    
   })
   .catch(err => {
     console.log(err)
