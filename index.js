@@ -33,9 +33,12 @@ function handleEvent(event) {
 
   else if (event.message.text === 'Menu'){
     menu.mainMenu(client, event)
+  } else if (event.message.text === 'Goals'){
+    menu.goals(client, event)
   }
 
   else {
+    var callMe = "Hallo ini Bang Bingbung, panggil aku saja ya ('Halo Bang Bing!') untuk mengajakku beraktifitas"
     formatReply = line_template.replyMessageFormat(event.message.text)
   }
 
