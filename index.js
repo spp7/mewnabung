@@ -32,7 +32,7 @@ function handleEvent(event) {
   }
 
   else if (event.message.text === 'Menu'){
-    return menu.mainMenu()
+    return menu.mainMenu(client, event)
   }
 
   else {

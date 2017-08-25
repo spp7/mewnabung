@@ -1,6 +1,6 @@
 'use strict'
 
-const mainMenu = function(event) {
+const mainMenu = function(client, event) {
   formatReply = {
     "type": "template",
     "altText": "this is a carousel template",
