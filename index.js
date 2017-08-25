@@ -92,6 +92,7 @@ function handleEvent(event) {
     }
     client.replyMessage(event.replyToken, formatReply)
     .then(result => {
+      console.log(result);
       return result
     })
     .catch(err => {
