@@ -77,8 +77,11 @@ function handleEvent(event) {
         ]
       }
     ]
-
     formatReply = line_template.replyMessageFormat("carousel", messages)
+  }
+
+  else {
+    formatReply = line_template.replyMessageFormat(event.message.text)
   }
 
   return client.replyMessage(event.replyToken, formatReply);
