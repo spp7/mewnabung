@@ -87,6 +87,23 @@ const goals = function(client, event) {
   })
 }
 
+const poin = function(client, event) {
+  let myPoin = 0
+  let message = {
+    type: 'text',
+    text: `poin mu untuk saat ini adalah ${myPoin}`
+  }
+  client.replyMessage(event.replyToken, message)
+  .then(result => {
+    var formatReply = 'helo'
+    console.log(result);
+    return result
+  })
+  .catch(err => {
+    console.log(err)
+  })
+}
+
 module.exports = {
   mainMenu,
   goals,
