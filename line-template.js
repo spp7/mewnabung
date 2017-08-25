@@ -37,14 +37,13 @@ const confirm = function(message) {
   }
 }
 
-const replyMessageFormat = function(type, messages) {
+const replyMessageFormat = function(type, messages='') {
   var replyFormat
   switch (type) {
     case "confirm":
       replyFormat = confirm(messages)
       break;
     case "thumbnailImage":
-      console.log(messages.actions.length);
       replyFormat = {
           "type": "buttons",
           "thumbnailImageUrl": "https://example.com/bot/images/image.jpg",
