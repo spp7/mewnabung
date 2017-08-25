@@ -16,7 +16,13 @@ const mainMenu = function(event) {
                 "type": "postback",
                 "label": "Hangman",
                 "data": "hangman",
-                "text": "hangman"
+                "text": "Hangman"
+              },
+              {
+                "type": "postback",
+                "label": "Quiz BCA",
+                "text": "Quiz BCA",
+                "data": "Quiz BCA"
               }
             ]
           },
@@ -27,9 +33,27 @@ const mainMenu = function(event) {
             "actions": [
               {
                 "type": "postback",
-                "label": "Hangman",
-                "data": "hangman",
-                "text": "hangman"
+                "label": "Cek Saldo",
+                "text": "Cek Saldo",
+                "data": "Cek Saldo"
+              },
+              {
+                "type": "postback",
+                "label": "Alokasi Dana",
+                "text": "Alokasi Dana",
+                "data": "Alokasi Dana"
+              },
+              {
+                "type": "postback",
+                "label": "Set Goals",
+                "text": "Set Goals",
+                "data": "Set Goals"
+              },
+              {
+                "type": "postback",
+                "label": "Cek Poin",
+                "text": "Cek Poin",
+                "data": "Cek Poin"
               }
             ]
           }
