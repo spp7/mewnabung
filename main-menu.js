@@ -25,7 +25,7 @@ const mainMenu = function(client, event) {
                 "text": "Coba Quiz BCA"
               },
               {
-                "type": "",
+                "type": "message",
                 "label": ""
               }
             ]
