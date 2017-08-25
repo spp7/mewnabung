@@ -13,15 +13,13 @@ const mainMenu = function(client, event) {
             "text": "Mainkan games seru, dan dapatkan poin!",
             "actions": [
               {
-                "type": "postback",
+                "type": "message",
                 "label": "Hangman",
-                "data": "hangman",
                 "text": "hangman"
               },
               {
-                "type": "postback",
+                "type": "message",
                 "label": "Quiz BCA",
-                "data": "quiz",
                 "text": "Coba Quiz BCA"
               },
               {
@@ -37,9 +35,8 @@ const mainMenu = function(client, event) {
             "text": "Lihat detail akunmu",
             "actions": [
               {
-                "type": "postback",
+                "type": "message",
                 "label": "Cek Saldo",
-                "data": "ceksaldo",
                 "text": "Cek Saldo"
               },
               {
