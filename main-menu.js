@@ -28,6 +28,11 @@ const mainMenu = function(client, event) {
                 "type": "message",
                 "label": " ",
                 "text": "Silahkan Pilih Menu"
+              },
+              {
+                "type": "message",
+                "label": " ",
+                "text": "Silahkan Pilih Menu"
               }
             ]
           },
@@ -51,6 +56,11 @@ const mainMenu = function(client, event) {
                 "type": "message",
                 "label": "Set Goals",
                 "text": "Set Goals"
+              },
+              {
+                "type": "message",
+                "label": "Cek Poin",
+                "text": "Cek Poin"
               }
             ]
           }
