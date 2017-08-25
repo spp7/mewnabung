@@ -37,7 +37,7 @@ const confirm = function(message) {
   }
 }
 
-const replyMessageFormat = function(type, messages='') {
+const replyMessageFormat = function(type, messages) {
   var replyFormat
   switch (type) {
     case "confirm":
