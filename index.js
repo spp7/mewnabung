@@ -73,11 +73,6 @@ function handleEvent(event) {
                   "type": "postback",
                   "label": "Set Goals",
                   "data": "Set Goals"
-                },
-                {
-                  "type": "postback",
-                  "label": "Cek Poin",
-                  "data": "Cek Poin"
                 }
               ]
             }
