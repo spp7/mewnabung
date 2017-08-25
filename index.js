@@ -39,7 +39,7 @@ function handleEvent(event) {
 
   else {
     var callMe = "Hallo ini Bang Bingbung, panggil aku saja ya ('Halo Bang Bing!') untuk mengajakku beraktifitas"
-    formatReply = line_template.replyMessageFormat(event.message.text)
+    formatReply = line_template.replyMessageFormat(callMe)
   }
 
   return client.replyMessage(event.replyToken, formatReply);

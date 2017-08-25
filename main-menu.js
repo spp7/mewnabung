@@ -77,6 +77,14 @@ const goals = function(client, event) {
           }
       ]
   })
+
+  client.replyMessage(event.replyToken, formatReply)
+  .then(result => {
+    return result
+  })
+  .catch(err => {
+    console.log(err)
+  })
 }
 
 module.exports = {
