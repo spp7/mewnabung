@@ -121,7 +121,10 @@ const poin = function(client, event) {
         ]
       }
     ])
-    return client.pushMessage(event.source.userId, formatReply)
+    console.log({client: client});
+    console.log('--------');
+    console.log({event: event});
+    client.pushMessage(event.source.userId, formatReply)
   })
   .catch(err => {
     console.log(err)
