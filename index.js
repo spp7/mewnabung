@@ -45,7 +45,7 @@ function handleEvent(event) {
           {
             "type": "message",
             "label": "Quiz BCA",
-            "data": "Quiz BCA"
+            "text": "Quiz BCA"
           }
         ]
       },
@@ -62,17 +62,17 @@ function handleEvent(event) {
           {
             "type": "message",
             "label": "Alokasi Dana",
-            "data": "Alokasi Dana"
+            "text": "Alokasi Dana"
           },
           {
             "type": "message",
             "label": "Set Goals",
-            "data": "Set Goals"
+            "text": "Set Goals"
           },
           {
             "type": "message",
             "label": "Cek Poin",
-            "data": "Cek Poin"
+            "text": "Cek Poin"
           }
         ]
       }
