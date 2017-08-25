@@ -1,6 +1,6 @@
 'use strict';
 
-const carouselTemplate = function(messages) {
+const carouselTemplate = function() {
   return {
     "type": "template",
     "altText": "this is a carousel template",
@@ -16,7 +16,6 @@ const carouselTemplate = function(messages) {
                       "type": "message",
                       "label": "Buy",
                       "data": "action=buy&itemid=111",
-                      "text": "test"
                   },
                   {
                       "type": "message",
@@ -83,7 +82,7 @@ const confirm = function(message) {
   }
 }
 
-const replyMessageFormat = function(type, messages) {
+const replyMessageFormat = function(type, messages='') {
   var replyFormat
   switch (type) {
     case "confirm":
@@ -93,7 +92,7 @@ const replyMessageFormat = function(type, messages) {
       replyFormat = thumbnailImage(messages)
       break;
     case "carousel":
-      replyFormat = carouselTemplate(messages)
+      replyFormat = carouselTemplate()
       break;
     default:
       replyFormat = { type: 'text', text: type };
