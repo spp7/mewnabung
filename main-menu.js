@@ -23,6 +23,10 @@ const mainMenu = function(client, event) {
                 "label": "Quiz BCA",
                 "data": "quiz",
                 "text": "Coba Quiz BCA"
+              },
+              {
+                "type": "",
+                "label": ""
               }
             ]
           },
@@ -41,6 +45,11 @@ const mainMenu = function(client, event) {
                 "type": "message",
                 "label": "Alokasi Dana",
                 "text": "Alokasi Dana"
+              },
+              {
+                "type": "message",
+                "label": "Set Goals",
+                "text": "Set Goals"
               }
             ]
           }
