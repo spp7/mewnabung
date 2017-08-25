@@ -14,11 +14,8 @@ const config = {
 const client = new line.Client(config);
 
 // create Express app
-// about Express itself: https://expressjs.com/
 const app = express();
 
-// register a webhook handler with middleware
-// about the middleware, please refer to doc
 app.post('/webhook', line.middleware(config), (req, res) => {
   Promise
     .all(req.body.events.map(handleEvent))
@@ -27,12 +24,62 @@ app.post('/webhook', line.middleware(config), (req, res) => {
 
 // event handler
 function handleEvent(event) {
+  var formatReply
   if (event.type !== 'message' || event.message.type !== 'text') {
     // ignore non-text-message event
     return Promise.resolve(null);
   }
 
-  var formatReply = line_template.replyMessageFormat(event.message.text)
+  else if (event.message.text === 'Menu'){
+    let messages = [
+      {
+        "thumbnailImageUrl": "https://example.com/bot/images/item1.jpg",
+        "title": "Games",
+        "text": "Mainkan games seru, dan dapatkan poin!",
+        "actions": [
+          {
+            "type": "message",
+            "label": "Hangman",
+            "text": "Hangman"
+          },
+          {
+            "type": "message",
+            "label": "Quiz BCA",
+            "data": "Quiz BCA"
+          }
+        ]
+      },
+      {
+        "thumbnailImageUrl": "https://example.com/bot/images/item2.jpg",
+        "title": "Akun Kamu",
+        "text": "Lihat detail akunmu",
+        "actions": [
+          {
+            "type": "message",
+            "label": "Cek Saldo",
+            "text": "Cek Saldo"
+          },
+          {
+            "type": "message",
+            "label": "Alokasi Dana",
+            "data": "Alokasi Dana"
+          },
+          {
+            "type": "message",
+            "label": "Set Goals",
+            "data": "Set Goals"
+          },
+          {
+            "type": "message",
+            "label": "Cek Poin",
+            "data": "Cek Poin"
+          }
+        ]
+      }
+    ]
+
+    formatReply = line_template.replyMessageFormat("carousel", messages)
+  }
 
   return client.replyMessage(event.replyToken, formatReply);
 }
