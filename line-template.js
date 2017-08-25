@@ -44,29 +44,7 @@ const replyMessageFormat = function(type, messages='') {
       replyFormat = confirm(messages)
       break;
     case "thumbnailImage":
-      replyFormat = {
-          "type": "buttons",
-          "thumbnailImageUrl": "https://example.com/bot/images/image.jpg",
-          "title": "Menu",
-          "text": "Please select",
-          "actions": [
-              {
-                "type": "message",
-                "label": "Buy",
-                "data": "action=buy&itemid=123"
-              },
-              {
-                "type": "message",
-                "label": "Add to cart",
-                "data": "action=add&itemid=123"
-              },
-              {
-                "type": "uri",
-                "label": "View detail",
-                "uri": "http://example.com/page/123"
-              }
-          ]
-      }
+      replyFormat = thumbnailImage(messages)
       break;
     case "carousel":
       replyFormat = carouselTemplate(messages)

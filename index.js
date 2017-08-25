@@ -31,32 +31,65 @@ function handleEvent(event) {
   }
 
   else if (event.message.text === 'Menu'){
-    var messagesCarousel = {
-        "type": "buttons",
-        "thumbnailImageUrl": "https://example.com/bot/images/image.jpg",
-        "title": "Menu",
-        "text": "Please select",
-        "actions": [
+    formatReply = {
+      "type": "template",
+      "altText": "this is a carousel template",
+      "template": {
+          "type": "carousel",
+          "columns": [
             {
-              "type": "message",
-              "label": "Buy",
-              "data": "action=buy&itemid=123"
+              "thumbnailImageUrl": "https://example.com/bot/images/item1.jpg",
+              "title": "Games",
+              "text": "Mainkan games seru, dan dapatkan poin!",
+              "actions": [
+                {
+                  "type": "postback",
+                  "label": "Hangman",
+                  "text": "Hangman",
+                  "data": "Hangman"
+                },
+                {
+                  "type": "postback",
+                  "label": "Quiz BCA",
+                  "text": "Quiz BCA",
+                  "data": "Quiz BCA"
+                }
+              ]
             },
             {
-              "type": "message",
-              "label": "Add to cart",
-              "data": "action=add&itemid=123"
-            },
-            {
-              "type": "uri",
-              "label": "View detail",
-              "uri": "http://example.com/page/123"
+              "thumbnailImageUrl": "https://example.com/bot/images/item2.jpg",
+              "title": "Akun Kamu",
+              "text": "Lihat detail akunmu",
+              "actions": [
+                {
+                  "type": "postback",
+                  "label": "Cek Saldo",
+                  "text": "Cek Saldo",
+                  "data": "Cek Saldo"
+                },
+                {
+                  "type": "postback",
+                  "label": "Alokasi Dana",
+                  "text": "Alokasi Dana",
+                  "data": "Alokasi Dana"
+                },
+                {
+                  "type": "postback",
+                  "label": "Set Goals",
+                  "text": "Set Goals",
+                  "data": "Set Goals"
+                },
+                {
+                  "type": "postback",
+                  "label": "Cek Poin",
+                  "text": "Cek Poin",
+                  "data": "Cek Poin"
+                }
+              ]
             }
-        ]
+          ]
+      }
     }
-    formatReply = line_template.replyMessageFormat("thumbnailImage")
-    console.log('----------------');
-    console.log(formatReply);
   }
 
   else {
