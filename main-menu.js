@@ -1,7 +1,7 @@
 'use strict'
 
 const mainMenu = function(client, event) {
-  formatReply = {
+  let formatReply = {
     "type": "template",
     "altText": "this is a carousel template",
     "template": {
