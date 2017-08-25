@@ -26,8 +26,8 @@ const mainMenu = function(client, event) {
               },
               {
                 "type": "message",
-                "label": "Set Goals",
-                "text": "Set Goals"
+                "label": " ",
+                "text": "Silahkan Pilih Menu"
               }
             ]
           },
