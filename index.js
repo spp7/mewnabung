@@ -43,16 +43,10 @@ function handleEvent(event) {
               "text": "Mainkan games seru, dan dapatkan poin!",
               "actions": [
                 {
-                  "type": "postback",
-                  "label": "Hangman",
-                  "text": "Hangman",
-                  "data": "Hangman"
-                },
-                {
-                  "type": "postback",
-                  "label": "Quiz BCA",
-                  "text": "Quiz BCA",
-                  "data": "Quiz BCA"
+                    "type": "postback",
+                    "label": "Hangman",
+                    "data": "hangman",
+                    "text": "hangman"
                 }
               ]
             },
@@ -62,28 +56,10 @@ function handleEvent(event) {
               "text": "Lihat detail akunmu",
               "actions": [
                 {
-                  "type": "postback",
-                  "label": "Cek Saldo",
-                  "text": "Cek Saldo",
-                  "data": "Cek Saldo"
-                },
-                {
-                  "type": "postback",
-                  "label": "Alokasi Dana",
-                  "text": "Alokasi Dana",
-                  "data": "Alokasi Dana"
-                },
-                {
-                  "type": "postback",
-                  "label": "Set Goals",
-                  "text": "Set Goals",
-                  "data": "Set Goals"
-                },
-                {
-                  "type": "postback",
-                  "label": "Cek Poin",
-                  "text": "Cek Poin",
-                  "data": "Cek Poin"
+                    "type": "postback",
+                    "label": "Hangman",
+                    "data": "hangman",
+                    "text": "hangman"
                 }
               ]
             }
