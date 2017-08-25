@@ -59,6 +59,27 @@ const mainMenu = function(client, event) {
   })
 }
 
+const goals = function(client, event) {
+  let formatReply = line_template.replyMessageFormat("thumbnailImage", {
+      "thumbnailImageUrl": "https://example.com/bot/images/image.jpg",
+      "title": "Goals",
+      "text": "Plan yang ingin kamu capai",
+      "actions": [
+          {
+            "type": "message",
+            "label": "List Goals saya",
+            "text": "List Goals saya"
+          },
+          {
+            "type": "message",
+            "label": "Buat Goal Baru",
+            "text": "Buat Goal Baru"
+          }
+      ]
+  })
+}
+
 module.exports = {
-  mainMenu
+  mainMenu,
+  goals,
 }
