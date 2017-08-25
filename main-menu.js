@@ -95,6 +95,7 @@ const poin = function(client, event) {
   }
   client.replyMessage(event.replyToken, message)
   .then(() => {
+    let arrMessage = []
     let formatReply = line_template.replyMessageFormat("carousel", [
       {
         "thumbnailImageUrl": "https://example.com/bot/images/item1.jpg",
@@ -121,10 +122,11 @@ const poin = function(client, event) {
         ]
       }
     ])
-    console.log({client: client});
+    arrMessage.push(formatReply)
+
     console.log('--------');
-    console.log({event: event});
-    client.pushMessage(event.source.userId, formatReply)
+    console.log(arrMessage);
+    client.pushMessage(event.source.userId, arrMessage)
   })
   .catch(err => {
     console.log(err)
