@@ -31,7 +31,7 @@ function handleEvent(event) {
   }
 
   else if (event.message.text === 'Menu'){
-    let messages = [
+    var messagesCarousel = [
       {
         "thumbnailImageUrl": "https://example.com/bot/images/item1.jpg",
         "title": "Games",
@@ -77,7 +77,7 @@ function handleEvent(event) {
         ]
       }
     ]
-    formatReply = line_template.replyMessageFormat("carousel", messages)
+    formatReply = line_template.replyMessageFormat("carousel", messagesCarousel)
   }
 
   else {
