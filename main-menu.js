@@ -20,9 +20,9 @@ const mainMenu = function(client, event) {
               },
               {
                 "type": "postback",
-                "label": "Hangman",
-                "data": "hangman",
-                "text": "hangman"
+                "label": "Quiz BCA",
+                "data": "quiz",
+                "text": "Coba Quiz BCA"
               }
             ]
           },
@@ -33,15 +33,20 @@ const mainMenu = function(client, event) {
             "actions": [
               {
                 "type": "postback",
-                "label": "Hangman",
-                "data": "hangman",
-                "text": "hangman"
+                "label": "Cek Saldo",
+                "data": "ceksaldo",
+                "text": "Cek Saldo"
               },
               {
                 "type": "postback",
-                "label": "Hangman",
+                "label": "Alokasi Dana",
                 "data": "hangman",
-                "text": "hangman"
+                "text": "Alokasi Dana"
+              },
+              {
+                "type": "message",
+                "label": "Set Goals",
+                "text": "Set Goals"
               }
             ]
           }
