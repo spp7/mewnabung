@@ -44,8 +44,7 @@ const replyMessageFormat = function(type, messages) {
       replyFormat = confirm(messages)
       break;
     case "thumbnailImage":
-      messages = JSON.parse(messages)
-      console.log(messages.title);
+      console.log(messages);
       replyFormat = {
         "type": "template",
         "altText": "this is a buttons template",
