@@ -15,8 +15,7 @@ const carouselTemplate = function(messages) {
                 {
                     "type": "message",
                     "label": "Buy",
-                    "data": "action=buy&itemid=111",
-                    "text": "test"
+                    "data": "action=buy&itemid=111"
                 },
                 {
                     "type": "message",
