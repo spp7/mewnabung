@@ -49,10 +49,10 @@ const replyMessageFormat = function(type, messages) {
         "altText": "this is a buttons template",
         "template": {
           "type": "buttons",
-          "thumbnailImageUrl": message.thumbnailImageUrl,
-          "title": message.title,
-          "text": message.text,
-          "actions": message.actions
+          "thumbnailImageUrl": messages.thumbnailImageUrl,
+          "title": messages.title,
+          "text": messages.text,
+          "actions": messages.actions
         }
       }
       break;
