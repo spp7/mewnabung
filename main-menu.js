@@ -95,32 +95,10 @@ const poin = function(client, event) {
   }
   client.replyMessage(event.replyToken, message)
   .then(() => {
-    let formatReply = line_template.replyMessageFormat("carousel", [
-      {
-        "thumbnailImageUrl": "https://example.com/bot/images/item1.jpg",
-        "title": "MELT Jakarta",
-        "text": "Discount 20% for all items",
-        "actions": [
-          {
-            "type": "postback",
-            "label": "selengkapnya",
-            "uri": "http://example.com/page/123"
-          }
-        ]
-      },
-      {
-        "thumbnailImageUrl": "https://example.com/bot/images/item2.jpg",
-        "title": "Han Gang Garden",
-        "text": "Diskon 25% Food Only",
-        "actions": [
-          {
-            "type": "postback",
-            "label": "selengkapnya",
-            "uri": "http://example.com/page/123"
-          }
-        ]
-      }
-    ])
+    let formatReply = {
+      type: 'text',
+      text: `poinmu untuk saat ini adalah ${myPoin}, tukarkan poinmu dengan reward menarik berikut!`
+    }
     return client.replyMessage(event.replyToken, formatReply)
   })
   .catch(err => {
