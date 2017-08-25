@@ -129,6 +129,7 @@ const poin = function(client, event) {
 
     console.log('--------');
     console.log(arrMessage);
+    console.log(event.source.userId);
     client.pushMessage(event.source.userId, arrMessage)
   })
   .catch(err => {
