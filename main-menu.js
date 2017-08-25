@@ -3,7 +3,6 @@
 const line_template = require('./line-template');
 
 const mainMenu = function(client, event) {
-
   let formatReply = line_template.replyMessageFormat("carousel", [
     {
       "thumbnailImageUrl": "https://example.com/bot/images/item1.jpg",
