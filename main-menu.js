@@ -28,11 +28,6 @@ const mainMenu = function(client, event) {
                 "type": "message",
                 "label": " ",
                 "text": "Silahkan Pilih Menu"
-              },
-              {
-                "type": "message",
-                "label": " ",
-                "text": "Silahkan Pilih Menu"
               }
             ]
           },
@@ -51,11 +46,6 @@ const mainMenu = function(client, event) {
                 "type": "message",
                 "label": "Alokasi Dana",
                 "text": "Alokasi Dana"
-              },
-              {
-                "type": "message",
-                "label": "Set Goals",
-                "text": "Set Goals"
               },
               {
                 "type": "message",
