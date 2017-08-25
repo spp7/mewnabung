@@ -1,24 +1,12 @@
 'use strict';
 
 const carouselTemplate = function(messages) {
-  let carousel = []
-
-  messages.forEach(message => {
-    let carData = {
-      "thumbnailImageUrl": message.thumbnailImageUrl,
-      "title": message.title,
-      "text": message.text,
-      "actions": message.actions
-    }
-    carousel.push(carData)
-  })
-
   return {
     "type": "template",
     "altText": "this is a carousel template",
     "template": {
       "type": "carousel",
-      "columns": carousel
+      "columns": messages
     }
   }
 }
