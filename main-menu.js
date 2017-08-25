@@ -95,10 +95,7 @@ const poin = function(client, event) {
   }
   client.replyMessage(event.replyToken, message)
   .then(() => {
-    let arrMessage = [{
-      type: 'text',
-      text: `poinmu untuk saat ini adalah ${myPoin}, tukarkan poinmu dengan reward menarik berikut!`
-    }]
+    let arrMessage = []
     let formatReply = line_template.replyMessageFormat("carousel", [
       {
         "thumbnailImageUrl": "https://example.com/bot/images/item1.jpg",
@@ -125,11 +122,11 @@ const poin = function(client, event) {
         ]
       }
     ])
-    // arrMessage.push(formatReply)
+    arrMessage.push(formatReply)
 
-    console.log('--------');
-    console.log(arrMessage);
-    console.log(event.source.userId);
+    // console.log('--------');
+    // console.log(arrMessage);
+    // console.log(event.source.userId);
     client.pushMessage(event.source.userId, arrMessage)
   })
   .catch(err => {
