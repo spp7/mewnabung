@@ -35,6 +35,8 @@ function handleEvent(event) {
     menu.mainMenu(client, event)
   } else if (event.message.text === 'Goals'){
     menu.goals(client, event)
+  } else if (event.message.text === 'Poin'){
+    menu.poin(client, event)
   }
 
   else {
