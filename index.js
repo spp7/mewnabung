@@ -1,6 +1,5 @@
 'use strict';
 
-const line_template = require('./line-template');
 const menu = require('./main-menu')
 const line = require('@line/bot-sdk');
 const express = require('express');
