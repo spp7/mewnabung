@@ -1,7 +1,7 @@
 'use strict'
 
 const mainMenu = function(client, event) {
-  let formatReply = {
+  formatReply = {
     "type": "template",
     "altText": "this is a carousel template",
     "template": {
@@ -16,13 +16,13 @@ const mainMenu = function(client, event) {
                 "type": "postback",
                 "label": "Hangman",
                 "data": "hangman",
-                "text": "Hangman"
+                "text": "hangman"
               },
               {
                 "type": "postback",
-                "label": "Quiz BCA",
-                "text": "Quiz BCA",
-                "data": "Quiz BCA"
+                "label": "Hangman",
+                "data": "hangman",
+                "text": "hangman"
               }
             ]
           },
@@ -33,34 +33,28 @@ const mainMenu = function(client, event) {
             "actions": [
               {
                 "type": "postback",
-                "label": "Cek Saldo",
-                "text": "Cek Saldo",
-                "data": "Cek Saldo"
+                "label": "Hangman",
+                "data": "hangman",
+                "text": "hangman"
               },
               {
                 "type": "postback",
-                "label": "Alokasi Dana",
-                "text": "Alokasi Dana",
-                "data": "Alokasi Dana"
-              },
-              {
-                "type": "postback",
-                "label": "Set Goals",
-                "text": "Set Goals",
-                "data": "Set Goals"
-              },
-              {
-                "type": "postback",
-                "label": "Cek Poin",
-                "text": "Cek Poin",
-                "data": "Cek Poin"
+                "label": "Hangman",
+                "data": "hangman",
+                "text": "hangman"
               }
             ]
           }
         ]
     }
   }
-  return client.replyMessage(event.replyToken, formatReply);
+  client.replyMessage(event.replyToken, formatReply)
+  .then(result => {
+    return result
+  })
+  .catch(err => {
+    console.log(err)
+  })
 }
 
 module.exports = {

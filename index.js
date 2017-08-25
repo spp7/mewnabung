@@ -1,6 +1,7 @@
 'use strict';
 
-const line_template = require('./line-template')
+const line_template = require('./line-template');
+const menu = require('./main-menu')
 const line = require('@line/bot-sdk');
 const express = require('express');
 
@@ -31,61 +32,7 @@ function handleEvent(event) {
   }
 
   else if (event.message.text === 'Menu'){
-    formatReply = {
-      "type": "template",
-      "altText": "this is a carousel template",
-      "template": {
-          "type": "carousel",
-          "columns": [
-            {
-              "thumbnailImageUrl": "https://example.com/bot/images/item1.jpg",
-              "title": "Games",
-              "text": "Mainkan games seru, dan dapatkan poin!",
-              "actions": [
-                {
-                  "type": "postback",
-                  "label": "Hangman",
-                  "data": "hangman",
-                  "text": "hangman"
-                },
-                {
-                  "type": "postback",
-                  "label": "Hangman",
-                  "data": "hangman",
-                  "text": "hangman"
-                }
-              ]
-            },
-            {
-              "thumbnailImageUrl": "https://example.com/bot/images/item2.jpg",
-              "title": "Akun Kamu",
-              "text": "Lihat detail akunmu",
-              "actions": [
-                {
-                  "type": "postback",
-                  "label": "Hangman",
-                  "data": "hangman",
-                  "text": "hangman"
-                },
-                {
-                  "type": "postback",
-                  "label": "Hangman",
-                  "data": "hangman",
-                  "text": "hangman"
-                }
-              ]
-            }
-          ]
-      }
-    }
-    client.replyMessage(event.replyToken, formatReply)
-    .then(result => {
-      console.log(result);
-      return result
-    })
-    .catch(err => {
-      console.log(err)
-    })
+    menu.mainMenu()
   }
 
   else {
