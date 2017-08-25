@@ -38,15 +38,9 @@ const mainMenu = function(client, event) {
                 "text": "Cek Saldo"
               },
               {
-                "type": "postback",
-                "label": "Alokasi Dana",
-                "data": "hangman",
-                "text": "Alokasi Dana"
-              },
-              {
                 "type": "message",
-                "label": "Set Goals",
-                "text": "Set Goals"
+                "label": "Alokasi Dana",
+                "text": "Alokasi Dana"
               }
             ]
           }
