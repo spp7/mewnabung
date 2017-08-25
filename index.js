@@ -55,6 +55,8 @@ function handleEvent(event) {
         ]
     }
     formatReply = line_template.replyMessageFormat("thumbnailImage", messagesCarousel)
+    console.log('----------------');
+    console.log(formatReply);
   }
 
   else {
