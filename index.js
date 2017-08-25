@@ -31,53 +31,30 @@ function handleEvent(event) {
   }
 
   else if (event.message.text === 'Menu'){
-    var messagesCarousel = [
-        {
-          "thumbnailImageUrl": "https://example.com/bot/images/item1.jpg",
-          "title": "this is menu",
-          "text": "description",
-          "actions": [
-              {
-                  "type": "message",
-                  "label": "Buy",
-                  "data": "action=buy&itemid=111"
-              },
-              {
-                  "type": "message",
-                  "label": "Add to cart",
-                  "data": "action=add&itemid=111"
-              },
-              {
-                  "type": "uri",
-                  "label": "View detail",
-                  "uri": "http://example.com/page/111"
-              }
-          ]
-        },
-        {
-          "thumbnailImageUrl": "https://example.com/bot/images/item2.jpg",
-          "title": "this is menu",
-          "text": "description",
-          "actions": [
-              {
-                  "type": "postback",
-                  "label": "Buy",
-                  "data": "action=buy&itemid=222"
-              },
-              {
-                  "type": "postback",
-                  "label": "Add to cart",
-                  "data": "action=add&itemid=222"
-              },
-              {
-                  "type": "uri",
-                  "label": "View detail",
-                  "uri": "http://example.com/page/222"
-              }
-          ]
-        }
-    ]
-    formatReply = line_template.replyMessageFormat("carousel", messagesCarousel)
+    var messagesCarousel = {
+        "type": "buttons",
+        "thumbnailImageUrl": "https://example.com/bot/images/image.jpg",
+        "title": "Menu",
+        "text": "Please select",
+        "actions": [
+            {
+              "type": "message",
+              "label": "Buy",
+              "data": "action=buy&itemid=123"
+            },
+            {
+              "type": "message",
+              "label": "Add to cart",
+              "data": "action=add&itemid=123"
+            },
+            {
+              "type": "uri",
+              "label": "View detail",
+              "uri": "http://example.com/page/123"
+            }
+        ]
+    }
+    formatReply = line_template.replyMessageFormat("thumbnailImage", messagesCarousel)
   }
 
   else {
