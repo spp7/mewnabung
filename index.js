@@ -50,7 +50,7 @@ function handleEvent(event) {
                 {
                   "type": "postback",
                   "label": "Quiz BCA",
-                  "data": "Quiz BCA"
+                  "data": "quizbca"
                 }
               ]
             },
@@ -62,17 +62,17 @@ function handleEvent(event) {
                 {
                   "type": "postback",
                   "label": "Cek Saldo",
-                  "data": "Cek Saldo"
+                  "data": "ceksaldo"
                 },
                 {
                   "type": "postback",
                   "label": "Alokasi Dana",
-                  "data": "Alokasi Dana"
+                  "data": "alokasi"
                 },
                 {
                   "type": "postback",
                   "label": "Set Goals",
-                  "data": "Set Goals"
+                  "data": "setgoals"
                 }
               ]
             }
