@@ -45,13 +45,11 @@ function handleEvent(event) {
                 {
                   "type": "postback",
                   "label": "Hangman",
-                  "data": "hangman",
-                  "text": "Hangman"
+                  "data": "hangman"
                 },
                 {
                   "type": "postback",
                   "label": "Quiz BCA",
-                  "text": "Quiz BCA",
                   "data": "Quiz BCA"
                 }
               ]
@@ -64,25 +62,21 @@ function handleEvent(event) {
                 {
                   "type": "postback",
                   "label": "Cek Saldo",
-                  "text": "Cek Saldo",
                   "data": "Cek Saldo"
                 },
                 {
                   "type": "postback",
                   "label": "Alokasi Dana",
-                  "text": "Alokasi Dana",
                   "data": "Alokasi Dana"
                 },
                 {
                   "type": "postback",
                   "label": "Set Goals",
-                  "text": "Set Goals",
                   "data": "Set Goals"
                 },
                 {
                   "type": "postback",
                   "label": "Cek Poin",
-                  "text": "Cek Poin",
                   "data": "Cek Poin"
                 }
               ]
