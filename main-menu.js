@@ -97,7 +97,7 @@ const poin = function(client, event) {
   .then(result => {
     var formatReply = 'helo'
     console.log(result);
-    return result
+    // return result
   })
   .catch(err => {
     console.log(err)
