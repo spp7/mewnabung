@@ -61,6 +61,9 @@ function handleEvent(event) {
         switch (urplMsg[msgIdx].action) {
           case 'points':
             formatReply = points(client, event, urplMsg[msgIdx])
+            if (urplMsg[msgIdx].stepIdx === actions.points.steps.length) {
+              urplMsg.splice(msgIdx, 1)
+            }
             break
         }
       }
