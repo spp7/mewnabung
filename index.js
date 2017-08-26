@@ -61,6 +61,12 @@ function handleEvent(event) {
               urplMsg.splice(msgIdx, 1)
             }
             break
+          case 'goals':
+            formatReply = goals(client, event, urplMsg[msgIdx])
+            if (urplMsg[msgIdx].stepIdx === actions.points.steps.length) {
+              urplMsg.splice(msgIdx, 1)
+            }
+            break
         }
       }
       else {
@@ -82,7 +88,18 @@ function handleEvent(event) {
                 result: []
               }
             )
-            formatReply = points(client,event, urplMsg[urplMsg.length-1])
+            formatReply = points(client,event, urplMsg[urplMsg.length-1]) // hati-hati ini bisa dapat user lain loh kalau main cepet-cepetan dan banyak yang mengakses
+            break
+          case 'Goals':
+            urplMsg.push(
+              {
+                userId: event.source.userId,
+                action: 'goals',
+                stepIdx: 1,
+                result: []
+              }
+            )
+            formatReply = goals(client,event, urplMsg[urplMsg.length-1])
             break
           default:
             formatReply = handleOtherText()

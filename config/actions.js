@@ -3,7 +3,8 @@ module.exports = {
     name: 'goals',
     steps: [
       {idx: "init", msg: ""},
-      {idx: "name", msg: "Tuliskan barang yang kamu inginkan."},
+      {idx: "name", msg: "Kamu ingin menabung untuk membeli apa?"},
+      {idx: "picture", msg: "Apakah kamu memiliki foto barang tersebut?"},
       {idx: "price", msg: "Berapa harganya?"},
       {idx: "deadline", msg: ""},
       {idx: "frequency", msg: ""}
