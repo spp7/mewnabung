@@ -1,6 +1,6 @@
 module.exports = {
   goals: {
-    name: goals,
+    name: 'goals',
     steps: [
       {idx: "init", msg: ""},
       {idx: "name", msg: "Tuliskan barang yang kamu inginkan."},
@@ -9,8 +9,8 @@ module.exports = {
       {idx: "frequency", msg: ""}
     ]
   },
-  point: {
-    name: points,
+  points: {
+    name: 'points',
     steps: [
       {idx: "init", msg: ""},
       {idx: "name", msg: "Tuliskan nama kamu."}
