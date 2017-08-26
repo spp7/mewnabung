@@ -11,7 +11,8 @@ const points = function(client, event, unprocessedMessage) {
     formatReply = line_template.replyMessageFormat(null, 'Poinmu untuk saat ini adalah 0. Hahaha')
   }
   else {
-    console.log('PESAAAAN', pointsActions)
+    console.log('PESAAAAN', pointsActions.steps)
+    console.log('IDX ===> ', unprocessedMessage.stepIdx)
     console.log('PESAAAAN', pointsActions.steps[unprocessedMessage.stepIdx].msg)
     formatReply = line_template.replyMessageFormat(null, pointsActions.steps[unprocessedMessage.stepIdx].msg)
   }
