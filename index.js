@@ -77,7 +77,7 @@ function handleEvent(event) {
                 switch (urplMsg.action) {
                   case 'points':
                     formatReply = points(client, event, response.data)
-                    if (urplMsg.stepIdx === actions.points.steps.length) {
+                    if (response.data.stepIdx === actions.points.steps.length) {
                       deleteMessage(event.source.userId, (err, deletedMsg) => {
                         return client.replyMessage(event.replyToken, formatReply)
                       })
