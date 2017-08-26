@@ -12,7 +12,7 @@ const goals = function(client, event, unprocessedMessage) {
   }
   else {
     if (goalsActions.steps[unprocessedMessage.stepIdx].msg === "") {
-      if  (steps.[unprocessedMessage.stepIdx].idx === "deadline") {
+      if  (goalsAction.steps[unprocessedMessage.stepIdx].idx === "deadline") {
         formatReply = line_template.replyMessageFormat("thumbnailImage", {
           thumbnailImageUrl: unprocessedMessage.result[1].length === 0 ? "https://example.com/bot/images/image.jpg" : unprocessedMessage.result[1].length,
           title: Goals,
