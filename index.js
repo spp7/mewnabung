@@ -62,41 +62,54 @@ function handleEvent(event) {
       console.log('akjsdbaksjdaskjdbajsd', response.data)
       if(response.data) {
       //  //let msgIdx = urplMsg.indexOf(onProgressUser)
-      //  let urplMsg = response.data
-      //  if (Date.now() - urplMsg.timestamp > 300000) {
-      //    deleteMessage(event.source.userId, (err, deletedMsg) => {
-      //      if (err) console.log(err)
-      //      formatReply = handleOtherText()
-      //    })
-      //  }
+        let urplMsg = response.data
+        if (Date.now() - urplMsg.timestamp > 300000) {
+          deleteMessage(event.source.userId, (err, deletedMsg) => {
+            if (err) console.log(err)
+            formatReply = handleOtherText()
+            return client.replyMessage(event.replyToken, formatReply)
+          })
+        }
         //if (Date.now() - onProgressUser.timestamp > 300000) {
         //  urplMsg.splice(msgIdx, 1)
         //  formatReply = handleOtherText()
         //}
-        //else {
-        //  console.log('masih kedetect')
-        //  urplMsg[msgIdx].stepIdx += 1
-        //  if (event.type === 'message') {
-        //    event.message.text ? urplMsg[msgIdx].result.push(event.message.text) : urplMsg[msgIdx].result.push(event.message.id)
-        //    switch (urplMsg[msgIdx].action) {
-        //      case 'points':
-        //        formatReply = points(client, event, urplMsg[msgIdx])
-        //        if (urplMsg[msgIdx].stepIdx === actions.points.steps.length) {
-        //          urplMsg.splice(msgIdx, 1)
-        //        }
-        //        break
-        //      case 'goals':
-        //        formatReply = goals(client, event, urplMsg[msgIdx])
-        //        if (urplMsg[msgIdx].stepIdx === actions.points.steps.length) {
-        //          urplMsg.splice(msgIdx, 1)
-        //        }
-        //        break
-        //    }
-        //  }
-        //  else {
-        //    formatReply = handleOtherText()
-        //  }
-        //}
+        else {
+          console.log('masih kedetect')
+          //urplMsg[msgIdx].stepIdx += 1
+          if (event.type === 'message') {
+            axios.put(`http://182.16.165.75:3001/api/message/${urplMsg.userId}`, {
+              result: event.message.text ? event.message.text : event.message.id,
+              timestamp: event.timestamp,
+              stepIdx: urplMsg.stepIdx + 1
+            })
+            //event.message.text ? urplMsg[msgIdx].result.push(event.message.text) : urplMsg[msgIdx].result.push(event.message.id)
+              .then((response) => {
+                switch (urplMsg.action) {
+                  case 'points':
+                    formatReply = points(client, event, response.data)
+                    if (urplMsg.stepIdx === actions.points.steps.length) {
+                      //if (urplMsg[msgIdx].stepIdx === actions.points.steps.length) {
+                      //urplMsg.splice(msgIdx, 1)
+                      deleteMessage(event.source.userId, (err, deletedMsg) => {
+                        return client.replyMessage(event.replyToken, formatReply)
+                      })
+                    }
+                    break
+                  case 'goals':
+                    //formatReply = goals(client, event, urplMsg[msgIdx])
+                    //if (urplMsg[msgIdx].stepIdx === actions.points.steps.length) {
+                    //  urplMsg.splice(msgIdx, 1)
+                    //}
+                    //break
+                }
+              })
+          }
+          else {
+            formatReply = handleOtherText()
+            return client.replyMessage(event.replyToken, formatReply)
+          }
+        }
       }
 
       else {
