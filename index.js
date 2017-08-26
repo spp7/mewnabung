@@ -48,7 +48,7 @@ function handleEvent(event) {
 
   axios.get(`182.16.165.75:3001/api/message/${event.source.userId}`)
     .then((response) => {
-      console.log(response)
+      console.log('SUKSEEEEEEES')
       if (onProgressUser) {
         let msgIdx = urplMsg.indexOf(onProgressUser)
         if (Date.now() - onProgressUser.timestamp > 300000) {
@@ -141,7 +141,7 @@ function handleEvent(event) {
       //  return client.replyMessage(event.replyToken, formatReply)
     })
     .catch((err) => {
-      console.log(err)
+      console.log('ERROOOOOOOR', err)
     })
 }
 
