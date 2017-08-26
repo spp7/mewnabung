@@ -2,6 +2,7 @@
 
 const line = require('@line/bot-sdk')
 const express = require('express')
+const axios = require('axios')
 
 const actions = require('./config/actions')
 const line_template = require('./line-template')
@@ -41,108 +42,115 @@ function handleEvent(event) {
   console.log('EVENT ======== ', event)
   var formatReply
 
-  let onProgressUser = urplMsg.find((user) => {
-    return user.userId === event.source.userId
-  })
+  //let onProgressUser = urplMsg.find((user) => {
+  //  return user.userId === event.source.userId
+  //})
 
-  if (onProgressUser) {
-    let msgIdx = urplMsg.indexOf(onProgressUser)
-    if (Date.now() - onProgressUser.timestamp > 300000) {
-      urplMsg.splice(msgIdx, 1)
-      formatReply = handleOtherText()
-    }
-    else {
-      console.log('masih kedetect')
-      urplMsg[msgIdx].stepIdx += 1
-      if (event.type === 'message') {
-        event.message.text ? urplMsg[msgIdx].result.push(event.message.text) : urplMsg[msgIdx].result.push(event.message.id)
-        switch (urplMsg[msgIdx].action) {
-          case 'points':
-            formatReply = points(client, event, urplMsg[msgIdx])
-            if (urplMsg[msgIdx].stepIdx === actions.points.steps.length) {
-              urplMsg.splice(msgIdx, 1)
+  axios.get(`182.16.165.75:3001/api/message/${event.source.userId}`)
+    .then((response) => {
+      console.log(response)
+      if (onProgressUser) {
+        let msgIdx = urplMsg.indexOf(onProgressUser)
+        if (Date.now() - onProgressUser.timestamp > 300000) {
+          urplMsg.splice(msgIdx, 1)
+          formatReply = handleOtherText()
+        }
+        else {
+          console.log('masih kedetect')
+          urplMsg[msgIdx].stepIdx += 1
+          if (event.type === 'message') {
+            event.message.text ? urplMsg[msgIdx].result.push(event.message.text) : urplMsg[msgIdx].result.push(event.message.id)
+            switch (urplMsg[msgIdx].action) {
+              case 'points':
+                formatReply = points(client, event, urplMsg[msgIdx])
+                if (urplMsg[msgIdx].stepIdx === actions.points.steps.length) {
+                  urplMsg.splice(msgIdx, 1)
+                }
+                break
+              case 'goals':
+                formatReply = goals(client, event, urplMsg[msgIdx])
+                if (urplMsg[msgIdx].stepIdx === actions.points.steps.length) {
+                  urplMsg.splice(msgIdx, 1)
+                }
+                break
             }
-            break
-          case 'goals':
-            formatReply = goals(client, event, urplMsg[msgIdx])
-            if (urplMsg[msgIdx].stepIdx === actions.points.steps.length) {
-              urplMsg.splice(msgIdx, 1)
-            }
-            break
+          }
+          else {
+            formatReply = handleOtherText()
+          }
         }
       }
-      else {
-        formatReply = handleOtherText()
-      }
-    }
-  }
 
-  else {
-    console.log('AKJAKJDSASKJDNSAKJDBASKJDSAKJDA', urplMsg)
-    switch (event.type) {
-      case 'message':
-        switch (event.message.text) {
-          case 'Poin':
-            urplMsg.push(
-              {
-                userId: event.source.userId,
-                action: 'points',
-                stepIdx: 1,
-                result: []
-              }
-            )
-            formatReply = points(client,event, urplMsg[urplMsg.length-1]) // hati-hati ini bisa dapat user lain loh kalau main cepet-cepetan dan banyak yang mengakses
-            break
-          case 'Goals':
-            urplMsg.push(
-              {
-                userId: event.source.userId,
-                action: 'goals',
-                stepIdx: 1,
-                result: []
-              }
-            )
-            formatReply = goals(client,event, urplMsg[urplMsg.length-1])
+      else {
+        console.log('AKJAKJDSASKJDNSAKJDBASKJDSAKJDA', urplMsg)
+        switch (event.type) {
+          case 'message':
+            switch (event.message.text) {
+              case 'Poin':
+                urplMsg.push(
+                  {
+                    userId: event.source.userId,
+                    action: 'points',
+                    stepIdx: 1,
+                    result: []
+                  }
+                )
+                formatReply = points(client,event, urplMsg[urplMsg.length-1]) // hati-hati ini bisa dapat user lain loh kalau main cepet-cepetan dan banyak yang mengakses
+                break
+              case 'Goals':
+                urplMsg.push(
+                  {
+                    userId: event.source.userId,
+                    action: 'goals',
+                    stepIdx: 1,
+                    result: []
+                  }
+                )
+                formatReply = goals(client,event, urplMsg[urplMsg.length-1])
+                break
+              default:
+                console.log('ULANG LAGI')
+                formatReply = handleOtherText()
+            }
             break
           default:
-            console.log('ULANG LAGI')
             formatReply = handleOtherText()
         }
-        break
-      default:
-        formatReply = handleOtherText()
-    }
+      }
+
+      return client.replyMessage(event.replyToken, formatReply)
+
+      //  if (event.type !== 'message' || event.message.type !== 'text') {
+      //    // ignore non-text-message event
+      //    return Promise.resolve(null)
+      //  }
+      //
+      //  else if (event.message.text === 'Menu' || event.message.text.toLowerCase() === 'halo bang bing'){
+      //    menu.mainMenu(client, event)
+      //  } else if (event.message.text === 'Goals'){
+      //    goals(client, event)
+      //  } else if (event.message.text === 'Poin'){
+      //    menu.poin(client, event)
+      //  }
+      //
+      //  else {
+      //    var callMe = "Hallo ini Bang Bingbung, panggil aku saja ya ('Halo Bang Bing!') untuk mengajakku beraktifitas"
+      //    formatReply = line_template.replyMessageFormat(callMe)
+      //  }
+      //
+      //  return client.replyMessage(event.replyToken, formatReply)
+    })
+    .catch((err) =<> {
+      console.log(err)
+    })
+
+
+  function handleOtherText() {
+    var initialization = "Halo! Ayo belajar kelola uang bersama Bang Bingbung! Silakan pilih menu utama atau tulis 'Hi Bang!' untuk mengajak saya belajar bersama."
+    return line_template.replyMessageFormat(null, initialization)
   }
 
-  return client.replyMessage(event.replyToken, formatReply)
-
-  //  if (event.type !== 'message' || event.message.type !== 'text') {
-  //    // ignore non-text-message event
-  //    return Promise.resolve(null)
-  //  }
-  //
-  //  else if (event.message.text === 'Menu' || event.message.text.toLowerCase() === 'halo bang bing'){
-  //    menu.mainMenu(client, event)
-  //  } else if (event.message.text === 'Goals'){
-  //    goals(client, event)
-  //  } else if (event.message.text === 'Poin'){
-  //    menu.poin(client, event)
-  //  }
-  //
-  //  else {
-  //    var callMe = "Hallo ini Bang Bingbung, panggil aku saja ya ('Halo Bang Bing!') untuk mengajakku beraktifitas"
-  //    formatReply = line_template.replyMessageFormat(callMe)
-  //  }
-  //
-  //  return client.replyMessage(event.replyToken, formatReply)
-}
-
-function handleOtherText() {
-  var initialization = "Halo! Ayo belajar kelola uang bersama Bang Bingbung! Silakan pilih menu utama atau tulis 'Hi Bang!' untuk mengajak saya belajar bersama."
-  return line_template.replyMessageFormat(null, initialization)
-}
-
-// listen on port
-const port = process.env.PORT || 3000
-app.listen(port, () => {
-})
+  // listen on port
+  const port = process.env.PORT || 3000
+  app.listen(port, () => {
+  })
