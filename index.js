@@ -16,15 +16,6 @@ const config = {
   channelSecret: process.env.CHANNEL_SECRET,
 }
 
-var urplMsg = [
-  {
-    userId: '',
-    action: '',
-    stepIdx: '',
-    result: []
-  }
-];
-
 // create LINE SDK client
 const client = new line.Client(config)
 
@@ -87,10 +78,15 @@ function handleEvent(event) {
                     }
                     break
                   case 'goals':
-                    //formatReply = goals(client, event, urplMsg[msgIdx])
-                    //if (urplMsg[msgIdx].stepIdx === actions.points.steps.length) {
-                    //  urplMsg.splice(msgIdx, 1)
-                    //}
+                    formatReply = goals(client, event, response.data)
+                    if (response.data.stepIdx === actions.points.steps.length) {
+                      deleteMessage(event.source.userId, (err, deletedMsg) => {
+                        return client.replyMessage(event.replyToken, formatReply)
+                      })
+                    }
+                    else {
+                      return client.replyMessage(event.replyToken, formatReply)
+                    }
                     break
                 }
               })
@@ -121,16 +117,17 @@ function handleEvent(event) {
                   })
                 break
               case 'Goals':
-                //                urplMsg.push(
-                //                  {
-                //                    userId: event.source.userId,
-                //                    action: 'goals',
-                //                    stepIdx: 1,
-                //                    result: []
-                //                  }
-                //                )
-                //                formatReply = goals(client,event, urplMsg[urplMsg.length-1])
-                //                return client.replyMessage(event.replyToken, formatReply)
+                axios.post(`http://182.16.165.75:3001/api/message`, {
+                  userId: event.source.userId,
+                  action: 'goals',
+                  stepIdx: 1,
+                  result: [],
+                  timestamp: event.timestamp
+                })
+                  .then ((response) => {
+                    formatReply = points(client, event, response.data)
+                    return client.replyMessage(event.replyToken, formatReply)
+                  })
                 break
               default:
                 console.log('ULANG LAGI')

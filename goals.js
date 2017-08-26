@@ -1,5 +1,7 @@
 'use strict'
 
+const axios = require('axios')
+
 const goalsActions = require('./config/actions').goals
 const line_template = require('./line-template')
 
