@@ -1,6 +1,6 @@
 'use strict'
 
-const line_template = require('./line-template');
+const line_template = require('./line-template')
 
 const mainMenu = function(client, event) {
   let formatReply = line_template.replyMessageFormat("carousel", [
@@ -124,9 +124,9 @@ const poin = function(client, event) {
     ])
     arrMessage.push(formatReply)
 
-    // console.log('--------');
-    // console.log(arrMessage);
-    // console.log(event.source.userId);
+    // console.log('--------')
+    // console.log(arrMessage)
+    // console.log(event.source.userId)
     client.pushMessage(event.source.userId, arrMessage)
   })
   .catch(err => {
