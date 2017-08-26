@@ -23,6 +23,7 @@ const goals = function(client, event) {
 
   client.replyMessage(event.replyToken, formatReply)
     .then(result => {
+      console.log('RESULT:----', result)
       return result
     })
     .catch(err => {
