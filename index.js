@@ -78,7 +78,7 @@ function handleEvent(event) {
               {
                 userID: event.source.userId,
                 action: 'points',
-                stepIdx: 0,
+                stepIdx: 1,
                 result: []
               }
             )
