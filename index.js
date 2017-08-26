@@ -39,6 +39,7 @@ app.post('/webhook', line.middleware(config), (req, res) => {
 // event handler
 function handleEvent(event) {
   console.log('holalallalalla', event)
+  console.log('UNREPLIED MESSAGE', urplMsg)
   var formatReply
 
   let onProgressUser = urplMsg.find((user) => {
@@ -58,7 +59,6 @@ function handleEvent(event) {
         switch (urplMsg[msgIdx].action) {
           case 'points':
             formatReply = points(client, event, urplMsg[msgIdx])
-
             break
         }
       }
@@ -73,6 +73,7 @@ function handleEvent(event) {
       case 'message':
         switch (event.message.text) {
           case 'Poin':
+            console.log('POIN LOH!')
             urplMsg.push(
               {
                 userID: event.source.userId,
