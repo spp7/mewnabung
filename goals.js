@@ -16,7 +16,7 @@ const goals = function(client, event, unprocessedMessage) {
     if (goalsActions.steps[unprocessedMessage.stepIdx].msg === "") {
       if  (goalsAction.steps[unprocessedMessage.stepIdx].idx === "deadline") {
         formatReply = line_template.replyMessageFormat("thumbnailImage", {
-          thumbnailImageUrl: unprocessedMessage.result[1].length === 0 ? "https://example.com/bot/images/image.jpg" : unprocessedMessage.result[1].length,
+          thumbnailImageUrl: `https://api.line.me/v2/bot/message/${unprocessedMessage.result[1]}/content`,
           title: Goals,
           text: "Kapan kamu ingin bisa memiliki ini?",
           actions: [
