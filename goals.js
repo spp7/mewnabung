@@ -17,7 +17,7 @@ const goals = function(client, event, unprocessedMessage) {
       if  (goalsActions.steps[unprocessedMessage.stepIdx].idx === "deadline") {
         formatReply = line_template.replyMessageFormat("thumbnailImage", {
           //thumbnailImageUrl: `https://api.line.me/v2/bot/message/${unprocessedMessage.result[1]}/content`,
-          thumbnailImageUrl: ``,
+          thumbnailImageUrl: "https://example.com/bot/images/image.jpg",
           title: "Goals",
           text: "Kapan kamu ingin bisa memiliki ini?",
           actions: [
@@ -43,7 +43,7 @@ const goals = function(client, event, unprocessedMessage) {
       else {
         formatReply = line_template.replyMessageFormat("thumbnailImage", {
           //thumbnailImageUrl: unprocessedMessage.result[1].length === 0 ? "https://example.com/bot/images/image.jpg" : unprocessedMessage.result[1].length,
-          thumbnailImageUrl: ``,
+          thumbnailImageUrl: "https://example.com/bot/images/image.jpg",
           title: "Goals",
           text: "Seberapa sering kamu ingin menabung?",
           actions: [
