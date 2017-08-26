@@ -31,7 +31,7 @@ function handleEvent(event) {
     return Promise.resolve(null);
   }
 
-  else if (event.message.text === 'Menu' || event.message.text === 'Halo Bang Bing'){
+  else if (event.message.text === 'Menu' || event.message.text.toLowerCase() === 'halo bang bing'){
     menu.mainMenu(client, event)
   } else if (event.message.text === 'Goals'){
     menu.goals(client, event)
