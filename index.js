@@ -143,14 +143,14 @@ function handleEvent(event) {
     .catch((err) => {
       console.log(err)
     })
+}
 
+function handleOtherText() {
+  var initialization = "Halo! Ayo belajar kelola uang bersama Bang Bingbung! Silakan pilih menu utama atau tulis 'Hi Bang!' untuk mengajak saya belajar bersama."
+  return line_template.replyMessageFormat(null, initialization)
+}
 
-  function handleOtherText() {
-    var initialization = "Halo! Ayo belajar kelola uang bersama Bang Bingbung! Silakan pilih menu utama atau tulis 'Hi Bang!' untuk mengajak saya belajar bersama."
-    return line_template.replyMessageFormat(null, initialization)
-  }
-
-  // listen on port
-  const port = process.env.PORT || 3000
-  app.listen(port, () => {
-  })
+// listen on port
+const port = process.env.PORT || 3000
+app.listen(port, () => {
+})
