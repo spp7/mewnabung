@@ -55,7 +55,7 @@ function handleEvent(event) {
       console.log('masih kedetect')
       urplMsg[msgIdx].stepIdx += 1
       if (event.type === 'message') {
-        event.message.text ? urplMsg[msgIdx].result.push(event.message.id) : urplMsg[msgIdx].result.push(event.message.text)
+        event.message.text ? urplMsg[msgIdx].result.push(event.message.text) : urplMsg[msgIdx].result.push(event.message.id)
         switch (urplMsg[msgIdx].action) {
           case 'points':
             formatReply = points(client, event, urplMsg[msgIdx])
@@ -78,6 +78,7 @@ function handleEvent(event) {
   }
 
   else {
+    console.log('AKJAKJDSASKJDNSAKJDBASKJDSAKJDA', urplMsg)
     switch (event.type) {
       case 'message':
         switch (event.message.text) {
