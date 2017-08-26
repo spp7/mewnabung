@@ -136,6 +136,6 @@ const poin = function(client, event) {
 
 module.exports = {
   mainMenu,
-  goals,
+  //goals,
   poin,
 }
