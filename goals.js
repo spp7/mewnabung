@@ -23,17 +23,17 @@ const goals = function(client, event, unprocessedMessage) {
           actions: [
             {
               type: "message",
-              label: "1",
+              label: "1 bulan lagi",
               text: "1 bulan lagi"
             },
             {
               type: "message",
-              label: "3",
+              label: "3 bulan lagi",
               text: "3 bulan lagi"
             },
             {
               type: "message",
-              label: "6",
+              label: "6 bulan lagi",
               text: "6 bulan lagi"
             }
           ]
@@ -49,17 +49,17 @@ const goals = function(client, event, unprocessedMessage) {
           actions: [
             {
               type: "message",
-              label: "1",
+              label: "harian",
               text: "harian"
             },
             {
               type: "message",
-              label: "2",
+              label: "mingguan",
               text: "mingguan"
             },
             {
               type: "message",
-              label: "3",
+              label: "bulanan",
               text: "bulanan"
             }
           ]
