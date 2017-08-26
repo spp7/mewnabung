@@ -78,7 +78,7 @@ function handleEvent(event) {
             console.log('POIN LOH!')
             urplMsg.push(
               {
-                userID: event.source.userId,
+                userId: event.source.userId,
                 action: 'points',
                 stepIdx: 1,
                 result: []
