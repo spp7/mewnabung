@@ -70,7 +70,7 @@ function handleEvent(event) {
 
   else {
     switch (event.type) {
-      case event.type === 'message' && event.message.type === 'text':
+      case 'message':
         switch (event.message.text) {
           case 'Poin':
             console.log('POIN LOH!')
