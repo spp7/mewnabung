@@ -38,6 +38,7 @@ app.post('/webhook', line.middleware(config), (req, res) => {
 
 // event handler
 function handleEvent(event) {
+  console.log('EVENT ======== ', event)
   var formatReply
 
   let onProgressUser = urplMsg.find((user) => {
@@ -52,8 +53,8 @@ function handleEvent(event) {
     }
     else {
       urplMsg[msgIdx].stepIdx += 1
-      if (event.type === 'message' && event.message.type === 'text') {
-        urplMsg[msgIdx].result.push(event.message.text)
+      if (event.type === 'message') {
+        event.message.text ? urplMsg[msgIdx].result.push(event.message.id) : urplMsg[msgIdx].result.push(event.message.text)
         switch (urplMsg[msgIdx].action) {
           case 'points':
             formatReply = points(client, event, urplMsg[msgIdx])
