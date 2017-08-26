@@ -140,7 +140,7 @@ function handleEvent(event) {
       //
       //  return client.replyMessage(event.replyToken, formatReply)
     })
-    .catch((err) =<> {
+    .catch((err) => {
       console.log(err)
     })
 
