@@ -49,7 +49,7 @@ function handleEvent(event) {
   axios.get(`http://182.16.165.75:3001/api/message/${event.source.userId}`)
     .then((response) =>{
       //if (onProgressUser) {
-      console.log(response.data)
+      console.log('akjsdbaksjdaskjdbajsd', response.data)
       //if(response.data) {
       //  let msgIdx = urplMsg.indexOf(onProgressUser)
       //  if (Date.now() - onProgressUser.timestamp > 300000) {
