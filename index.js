@@ -37,6 +37,16 @@ app.post('/webhook', line.middleware(config), (req, res) => {
     .then((result) => res.json(result))
 })
 
+function deleteMessage(userId, callback) {
+  axios.delete(`http://182.16.165.75:3001/api/message/${userId}`)
+    .then((response) => {
+      callback(null, response.data)
+    })
+    .catch((error) => {
+      callback(err)
+    })
+}
+
 // event handler
 function handleEvent(event) {
   console.log('EVENT ======== ', event)
@@ -47,78 +57,97 @@ function handleEvent(event) {
   //})
 
   axios.get(`http://182.16.165.75:3001/api/message/${event.source.userId}`)
-    .then((response) =>{
+    .then((response) => {
       //if (onProgressUser) {
       console.log('akjsdbaksjdaskjdbajsd', response.data)
-      //if(response.data) {
-      //  let msgIdx = urplMsg.indexOf(onProgressUser)
-      //  if (Date.now() - onProgressUser.timestamp > 300000) {
-      //    urplMsg.splice(msgIdx, 1)
-      //    formatReply = handleOtherText()
-      //  }
-      //  else {
-      //    console.log('masih kedetect')
-      //    urplMsg[msgIdx].stepIdx += 1
-      //    if (event.type === 'message') {
-      //      event.message.text ? urplMsg[msgIdx].result.push(event.message.text) : urplMsg[msgIdx].result.push(event.message.id)
-      //      switch (urplMsg[msgIdx].action) {
-      //        case 'points':
-      //          formatReply = points(client, event, urplMsg[msgIdx])
-      //          if (urplMsg[msgIdx].stepIdx === actions.points.steps.length) {
-      //            urplMsg.splice(msgIdx, 1)
-      //          }
-      //          break
-      //        case 'goals':
-      //          formatReply = goals(client, event, urplMsg[msgIdx])
-      //          if (urplMsg[msgIdx].stepIdx === actions.points.steps.length) {
-      //            urplMsg.splice(msgIdx, 1)
-      //          }
-      //          break
-      //      }
-      //    }
-      //    else {
+      if(response.data) {
+      //  //let msgIdx = urplMsg.indexOf(onProgressUser)
+      //  let urplMsg = response.data
+      //  if (Date.now() - urplMsg.timestamp > 300000) {
+      //    deleteMessage(event.source.userId, (err, deletedMsg) => {
+      //      if (err) console.log(err)
       //      formatReply = handleOtherText()
-      //    }
+      //    })
       //  }
-      //}
+        //if (Date.now() - onProgressUser.timestamp > 300000) {
+        //  urplMsg.splice(msgIdx, 1)
+        //  formatReply = handleOtherText()
+        //}
+        //else {
+        //  console.log('masih kedetect')
+        //  urplMsg[msgIdx].stepIdx += 1
+        //  if (event.type === 'message') {
+        //    event.message.text ? urplMsg[msgIdx].result.push(event.message.text) : urplMsg[msgIdx].result.push(event.message.id)
+        //    switch (urplMsg[msgIdx].action) {
+        //      case 'points':
+        //        formatReply = points(client, event, urplMsg[msgIdx])
+        //        if (urplMsg[msgIdx].stepIdx === actions.points.steps.length) {
+        //          urplMsg.splice(msgIdx, 1)
+        //        }
+        //        break
+        //      case 'goals':
+        //        formatReply = goals(client, event, urplMsg[msgIdx])
+        //        if (urplMsg[msgIdx].stepIdx === actions.points.steps.length) {
+        //          urplMsg.splice(msgIdx, 1)
+        //        }
+        //        break
+        //    }
+        //  }
+        //  else {
+        //    formatReply = handleOtherText()
+        //  }
+        //}
+      }
 
-      //else {
-      //  console.log('AKJAKJDSASKJDNSAKJDBASKJDSAKJDA', urplMsg)
-      //  switch (event.type) {
-      //    case 'message':
-      //      switch (event.message.text) {
-      //        case 'Poin':
-      //          urplMsg.push(
-      //            {
-      //              userId: event.source.userId,
-      //              action: 'points',
-      //              stepIdx: 1,
-      //              result: []
-      //            }
-      //          )
-      //          formatReply = points(client,event, urplMsg[urplMsg.length-1]) // hati-hati ini bisa dapat user lain loh kalau main cepet-cepetan dan banyak yang mengakses
-      //          break
-      //        case 'Goals':
-      //          urplMsg.push(
-      //            {
-      //              userId: event.source.userId,
-      //              action: 'goals',
-      //              stepIdx: 1,
-      //              result: []
-      //            }
-      //          )
-      //          formatReply = goals(client,event, urplMsg[urplMsg.length-1])
-      //          break
-      //        default:
-      //          console.log('ULANG LAGI')
-      //          formatReply = handleOtherText()
-      //      }
-      //      break
-      //    default:
-      //      formatReply = handleOtherText()
-      //  }
-      //}
-      formatReply = handleOtherText()
+      else {
+        switch (event.type) {
+          case 'message':
+            switch (event.message.text) {
+              case 'Poin':
+                axios.post(`http://182.16.165.75:3001/api/message/${userId}`, {
+                  userId: event.source.userId,
+                  action: 'points',
+                  stepIdx: 1,
+                  result: [],
+                  timestamp: event.timestamp
+                })
+                  .then ((response) => {
+                    console.log('RESPONSE POST OY', response.data)
+
+                    //urplMsg.push(
+                    //{
+                    //userId: event.source.userId,
+                    //action: 'points',
+                    //stepIdx: 1,
+                    //result: []
+                    //}
+                    //)
+                    //formatReply = points(client,event, urplMsg[urplMsg.length-1]) // hati-hati ini bisa dapat user lain loh kalau main cepet-cepetan dan banyak yang mengakses
+                    formatReply = points(client, event, response.data)
+                    return client.replyMessage(event.replyToken, formatReply)
+                  })
+                break
+              case 'Goals':
+                urplMsg.push(
+                  {
+                    userId: event.source.userId,
+                    action: 'goals',
+                    stepIdx: 1,
+                    result: []
+                  }
+                )
+                formatReply = goals(client,event, urplMsg[urplMsg.length-1])
+                break
+              default:
+                console.log('ULANG LAGI')
+                formatReply = handleOtherText()
+            }
+            break
+          default:
+            formatReply = handleOtherText()
+        }
+      }
+      //formatReply = handleOtherText()
 
       return client.replyMessage(event.replyToken, formatReply)
 
