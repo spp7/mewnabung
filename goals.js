@@ -30,6 +30,4 @@ const goals = function(client, event) {
     })
 };
 
-module.exports = {
-  goals
-}
+module.exports = goals
