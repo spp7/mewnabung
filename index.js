@@ -46,6 +46,8 @@ function handleEvent(event) {
     return urplMsg.userId === event.source.userId
   })
 
+  console.log('ONPROGRESSUSER CUYYYY', onProgressUser)
+
   if (onProgressUser) {
     let msgIdx = urplMsg.indexOf(onProgressUser)
     if (Date.now() - onProgressUser.timestamp > 300000) {
