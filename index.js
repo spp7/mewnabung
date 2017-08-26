@@ -16,7 +16,7 @@ const config = {
 
 var urplMsg = [
   {
-    userID: '',
+    userId: '',
     action: '',
     stepIdx: '',
     result: []
@@ -41,7 +41,7 @@ function handleEvent(event) {
   var formatReply
 
   let onProgressUser = urplMsg.find((user) => {
-    return urplMsg.source.userId === event.source.userId
+    return urplMsg.userId === event.source.userId
   })
 
   if (onProgressUser) {
