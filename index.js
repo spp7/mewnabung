@@ -118,7 +118,7 @@ function handleEvent(event) {
 
 function handleOtherText() {
   var initialization = "Halo! Ayo belajar kelola uang bersama Bang Bingbung! Silakan pilih menu utama atau tulis 'Hi Bang!' untuk mengajak saya belajar bersama."
-  return (line_template.replyMessageFormat(initialization))
+  return (null, line_template.replyMessageFormat(initialization))
 }
 
 // listen on port
