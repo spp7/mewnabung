@@ -81,6 +81,7 @@ function handleEvent(event) {
                     formatReply = goals(client, event, response.data)
                     if (response.data.stepIdx === actions.goals.steps.length) {
                       deleteMessage(event.source.userId, (err, deletedMsg) => {
+                        if (err) console.log('ERRROOORR', err)
                         console.log('DELETED LOOOOH')
                         return client.replyMessage(event.replyToken, formatReply)
                       })
