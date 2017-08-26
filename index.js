@@ -34,6 +34,7 @@ app.post('/webhook', line.middleware(config), (req, res) => {
   Promise
     .all(req.body.events.map(handleEvent))
     .then((result) => res.json(result))
+    .catch((err) => console.log('ERROR OI!!', err))
 })
 
 // event handler
@@ -82,7 +83,9 @@ function handleEvent(event) {
                 result: []
               }
             )
+            console.log('IS IT BEING PUSHED?????', urplMsg)
             formatReply = points(client,event, urplMsg[urplMsg.length-1])
+            console.log('FORMAT REPLY DI INDEX   ', formatReply)
             break
           default:
             formatReply = handleOtherText()
