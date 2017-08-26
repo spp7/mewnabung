@@ -50,7 +50,7 @@ const replyMessageFormat = function(type, messages='') {
       replyFormat = carouselTemplate(messages)
       break;
     default:
-      replyFormat = { type: 'text', text: type };
+      replyFormat = { type: 'text', text: messages };
   }
   return replyFormat
 }
