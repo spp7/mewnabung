@@ -79,6 +79,7 @@ function handleEvent(event) {
                     break
                   case 'goals':
                     formatReply = goals(client, event, response.data)
+                    console.log('FORMAT REPLYYY', formatReply)
                     if (response.data.stepIdx === actions.goals.steps.length) {
                       deleteMessage(event.source.userId, (err, deletedMsg) => {
                         if (err) console.log('ERRROOORR', err)
