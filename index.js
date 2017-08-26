@@ -126,7 +126,7 @@ function handleEvent(event) {
                   timestamp: event.timestamp
                 })
                   .then ((response) => {
-                    formatReply = points(client, event, response.data)
+                    formatReply = goals(client, event, response.data)
                     return client.replyMessage(event.replyToken, formatReply)
                   })
                 break
