@@ -46,7 +46,7 @@ function handleEvent(event) {
   //  return user.userId === event.source.userId
   //})
 
-  axios.get(`182.16.165.75:3001/api/message/${event.source.userId}`)
+  axios.get(`http://182.16.165.75:3001/api/message/${event.source.userId}`)
     .then((response) =>{
       //if (onProgressUser) {
       console.log(response.data)
