@@ -14,7 +14,7 @@ const goals = function(client, event, unprocessedMessage) {
   }
   else {
     if (goalsActions.steps[unprocessedMessage.stepIdx].msg === "") {
-      if  (goalsAction.steps[unprocessedMessage.stepIdx].idx === "deadline") {
+      if  (goalsActions.steps[unprocessedMessage.stepIdx].idx === "deadline") {
         formatReply = line_template.replyMessageFormat("thumbnailImage", {
           //thumbnailImageUrl: `https://api.line.me/v2/bot/message/${unprocessedMessage.result[1]}/content`,
           thumbnailImageUrl: ``,
