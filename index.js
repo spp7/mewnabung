@@ -117,6 +117,7 @@ function handleEvent(event) {
                   })
                 break
               case 'Goals':
+                console.log('masuk goals')
                 axios.post(`http://182.16.165.75:3001/api/message`, {
                   userId: event.source.userId,
                   action: 'goals',
