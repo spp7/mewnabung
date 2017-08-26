@@ -7,6 +7,7 @@ const actions = require('./config/actions')
 const line_template = require('./line-template')
 const menu = require('./main-menu')
 const goals = require('./goals')
+const points = require('./points')
 
 // create LINE SDK config from env variables
 const config = {
@@ -80,7 +81,7 @@ function handleEvent(event) {
                 result: []
               }
             )
-            points(client,event, urplMsg[urplMsg.length-1])
+            formatReply = points(client,event, urplMsg[urplMsg.length-1])
             break
           default:
             formatReply = handleOtherText()
