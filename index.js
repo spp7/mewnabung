@@ -38,15 +38,11 @@ app.post('/webhook', line.middleware(config), (req, res) => {
 
 // event handler
 function handleEvent(event) {
-  console.log('holalallalalla', event)
-  console.log('UNREPLIED MESSAGE', urplMsg)
   var formatReply
 
   let onProgressUser = urplMsg.find((user) => {
     return user.userId === event.source.userId
   })
-
-  console.log('ONPROGRESSUSER CUYYYY', onProgressUser)
 
   if (onProgressUser) {
     let msgIdx = urplMsg.indexOf(onProgressUser)
@@ -78,7 +74,6 @@ function handleEvent(event) {
       case 'message':
         switch (event.message.text) {
           case 'Poin':
-            console.log('POIN LOH!')
             urplMsg.push(
               {
                 userId: event.source.userId,
@@ -87,9 +82,7 @@ function handleEvent(event) {
                 result: []
               }
             )
-            console.log('IS IT BEING PUSHED?????', urplMsg)
             formatReply = points(client,event, urplMsg[urplMsg.length-1])
-            console.log('FORMAT REPLY DI INDEX   ', formatReply)
             break
           default:
             formatReply = handleOtherText()
@@ -131,5 +124,4 @@ function handleOtherText() {
 // listen on port
 const port = process.env.PORT || 3000
 app.listen(port, () => {
-  console.log(`listening on ${port}`)
 })
