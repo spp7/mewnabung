@@ -52,16 +52,10 @@ function handleEvent(event) {
   console.log('EVENT ======== ', event)
   var formatReply
 
-  //let onProgressUser = urplMsg.find((user) => {
-  //  return user.userId === event.source.userId
-  //})
-
   axios.get(`http://182.16.165.75:3001/api/message/${event.source.userId}`)
     .then((response) => {
-      //if (onProgressUser) {
       console.log('akjsdbaksjdaskjdbajsd', response.data)
       if(response.data) {
-      //  //let msgIdx = urplMsg.indexOf(onProgressUser)
         let urplMsg = response.data
         if (Date.now() - urplMsg.timestamp > 300000) {
           deleteMessage(event.source.userId, (err, deletedMsg) => {
@@ -70,30 +64,26 @@ function handleEvent(event) {
             return client.replyMessage(event.replyToken, formatReply)
           })
         }
-        //if (Date.now() - onProgressUser.timestamp > 300000) {
-        //  urplMsg.splice(msgIdx, 1)
-        //  formatReply = handleOtherText()
-        //}
         else {
           console.log('masih kedetect')
-          //urplMsg[msgIdx].stepIdx += 1
           if (event.type === 'message') {
             axios.put(`http://182.16.165.75:3001/api/message/${urplMsg.userId}`, {
               result: event.message.text ? event.message.text : event.message.id,
               timestamp: event.timestamp,
               stepIdx: urplMsg.stepIdx + 1
             })
-            //event.message.text ? urplMsg[msgIdx].result.push(event.message.text) : urplMsg[msgIdx].result.push(event.message.id)
               .then((response) => {
+                console.log('EDITED RESPONSE ', response)
                 switch (urplMsg.action) {
                   case 'points':
                     formatReply = points(client, event, response.data)
                     if (urplMsg.stepIdx === actions.points.steps.length) {
-                      //if (urplMsg[msgIdx].stepIdx === actions.points.steps.length) {
-                      //urplMsg.splice(msgIdx, 1)
                       deleteMessage(event.source.userId, (err, deletedMsg) => {
                         return client.replyMessage(event.replyToken, formatReply)
                       })
+                    }
+                    else {
+                      return client.replyMessage(event.replyToken, formatReply)
                     }
                     break
                   case 'goals':
@@ -101,7 +91,7 @@ function handleEvent(event) {
                     //if (urplMsg[msgIdx].stepIdx === actions.points.steps.length) {
                     //  urplMsg.splice(msgIdx, 1)
                     //}
-                    //break
+                    break
                 }
               })
           }
@@ -126,31 +116,21 @@ function handleEvent(event) {
                 })
                   .then ((response) => {
                     console.log('RESPONSE POST OY', response.data)
-
-                    //urplMsg.push(
-                    //{
-                    //userId: event.source.userId,
-                    //action: 'points',
-                    //stepIdx: 1,
-                    //result: []
-                    //}
-                    //)
-                    //formatReply = points(client,event, urplMsg[urplMsg.length-1]) // hati-hati ini bisa dapat user lain loh kalau main cepet-cepetan dan banyak yang mengakses
                     formatReply = points(client, event, response.data)
                     return client.replyMessage(event.replyToken, formatReply)
                   })
                 break
               case 'Goals':
-                urplMsg.push(
-                  {
-                    userId: event.source.userId,
-                    action: 'goals',
-                    stepIdx: 1,
-                    result: []
-                  }
-                )
-                formatReply = goals(client,event, urplMsg[urplMsg.length-1])
-                return client.replyMessage(event.replyToken, formatReply)
+                //                urplMsg.push(
+                //                  {
+                //                    userId: event.source.userId,
+                //                    action: 'goals',
+                //                    stepIdx: 1,
+                //                    result: []
+                //                  }
+                //                )
+                //                formatReply = goals(client,event, urplMsg[urplMsg.length-1])
+                //                return client.replyMessage(event.replyToken, formatReply)
                 break
               default:
                 console.log('ULANG LAGI')
@@ -163,9 +143,6 @@ function handleEvent(event) {
             return client.replyMessage(event.replyToken, formatReply)
         }
       }
-      //formatReply = handleOtherText()
-
-      //return client.replyMessage(event.replyToken, formatReply)
 
       //  if (event.type !== 'message' || event.message.type !== 'text') {
       //    // ignore non-text-message event
