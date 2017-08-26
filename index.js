@@ -43,7 +43,7 @@ function handleEvent(event) {
   var formatReply
 
   let onProgressUser = urplMsg.find((user) => {
-    return urplMsg.userId === event.source.userId
+    return user.userId === event.source.userId
   })
 
   console.log('ONPROGRESSUSER CUYYYY', onProgressUser)
