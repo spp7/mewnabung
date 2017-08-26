@@ -79,7 +79,7 @@ function handleEvent(event) {
                     break
                   case 'goals':
                     formatReply = goals(client, event, response.data)
-                    if (response.data.stepIdx === actions.points.steps.length) {
+                    if (response.data.stepIdx === actions.goals.steps.length) {
                       deleteMessage(event.source.userId, (err, deletedMsg) => {
                         return client.replyMessage(event.replyToken, formatReply)
                       })
