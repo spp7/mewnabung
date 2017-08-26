@@ -13,3 +13,5 @@ const points = function(client, event, unprocessedMessage) {
   }
   return formatReply
 }
+
+module.exports = points
