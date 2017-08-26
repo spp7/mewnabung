@@ -52,6 +52,7 @@ function handleEvent(event) {
       formatReply = handleOtherText()
     }
     else {
+      console.log('masih kedetect')
       urplMsg[msgIdx].stepIdx += 1
       if (event.type === 'message') {
         event.message.text ? urplMsg[msgIdx].result.push(event.message.id) : urplMsg[msgIdx].result.push(event.message.text)
@@ -103,6 +104,7 @@ function handleEvent(event) {
             formatReply = goals(client,event, urplMsg[urplMsg.length-1])
             break
           default:
+            console.log('ULANG LAGI')
             formatReply = handleOtherText()
         }
         break
