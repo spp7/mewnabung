@@ -34,7 +34,6 @@ app.post('/webhook', line.middleware(config), (req, res) => {
   Promise
     .all(req.body.events.map(handleEvent))
     .then((result) => res.json(result))
-    .catch((err) => console.log('ERROR OI!!', err))
 })
 
 // event handler
@@ -121,7 +120,7 @@ function handleEvent(event) {
 
 function handleOtherText() {
   var initialization = "Halo! Ayo belajar kelola uang bersama Bang Bingbung! Silakan pilih menu utama atau tulis 'Hi Bang!' untuk mengajak saya belajar bersama."
-  return (null, line_template.replyMessageFormat(initialization))
+  return line_template.replyMessageFormat(null, initialization)
 }
 
 // listen on port
