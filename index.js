@@ -104,7 +104,7 @@ function handleEvent(event) {
           case 'message':
             switch (event.message.text) {
               case 'Poin':
-                axios.post(`http://182.16.165.75:3001/api/message/${userId}`, {
+                axios.post(`http://182.16.165.75:3001/api/message`, {
                   userId: event.source.userId,
                   action: 'points',
                   stepIdx: 1,
