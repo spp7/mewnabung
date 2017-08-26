@@ -5,13 +5,14 @@ const line_template = require('./line-template')
 
 const goals = function(client, event, unprocessedMessage) {
   let formatReply
+  console.log('RESULT: ', unprocessedMessage.result)
   if (unprocessedMessage.stepIdx === goalsActions.steps.length) {
     console.log(unprocessedMessage.result)
     formatReply = line_template.replyMessageFormat(null, `OK! Targetmu sudah Bang Bingbung simpan! Semangat ya!`)
   }
   else {
     if (goalsActions.steps[unprocessedMessage.stepIdx].msg === "") {
-      if  (goalsAction.steps[unprocessedMessage.stepIdx].idx === "deadline") {
+      if  (steps.[unprocessedMessage.stepIdx].idx === "deadline") {
         formatReply = line_template.replyMessageFormat("thumbnailImage", {
           thumbnailImageUrl: unprocessedMessage.result[1].length === 0 ? "https://example.com/bot/images/image.jpg" : unprocessedMessage.result[1].length,
           title: Goals,
