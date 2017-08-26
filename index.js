@@ -137,19 +137,22 @@ function handleEvent(event) {
                   }
                 )
                 formatReply = goals(client,event, urplMsg[urplMsg.length-1])
+                return client.replyMessage(event.replyToken, formatReply)
                 break
               default:
                 console.log('ULANG LAGI')
                 formatReply = handleOtherText()
+                return client.replyMessage(event.replyToken, formatReply)
             }
             break
           default:
             formatReply = handleOtherText()
+            return client.replyMessage(event.replyToken, formatReply)
         }
       }
       //formatReply = handleOtherText()
 
-      return client.replyMessage(event.replyToken, formatReply)
+      //return client.replyMessage(event.replyToken, formatReply)
 
       //  if (event.type !== 'message' || event.message.type !== 'text') {
       //    // ignore non-text-message event
