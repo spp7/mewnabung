@@ -4,6 +4,7 @@ const pointsActions = require('./config/actions').points
 const line_template = require('./line-template')
 
 const points = function(client, event, unprocessedMessage) {
+  let formatReply
   if (unprocessedMessage.stepIdx === pointsActions.steps.length) {
     console.log(unprocessedMessage.result.join(","))
     formatReply = line_template.replyMessageFormat('Poinmu untuk saat ini adalah 0. Hahaha')
