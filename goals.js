@@ -18,7 +18,7 @@ const goals = function(client, event, unprocessedMessage) {
         formatReply = line_template.replyMessageFormat("thumbnailImage", {
           //thumbnailImageUrl: `https://api.line.me/v2/bot/message/${unprocessedMessage.result[1]}/content`,
           thumbnailImageUrl: ``,
-          title: Goals,
+          title: "Goals",
           text: "Kapan kamu ingin bisa memiliki ini?",
           actions: [
             {
