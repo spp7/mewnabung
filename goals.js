@@ -14,9 +14,9 @@ const goals = function(client, event) {
         "text": "List Goals saya"
       },
       {
-        "type": "message",
+        "type": "postback",
         "label": "Buat Goal Baru",
-        "text": "Buat Goal Baru"
+        "data": "Buat Goal Baru"
       }
     ]
   })
